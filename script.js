@@ -159,7 +159,11 @@ async function init(){
      layout:{'symbol-placement':'line','symbol-spacing':350,'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],13,11,17,13],'text-max-angle':30,'text-keep-upright':true,'text-pitch-alignment':'viewport','text-rotation-alignment':'map','text-allow-overlap':false,'text-ignore-placement':false,'text-padding':5},
      paint:{'text-color':'#e1e7dc','text-halo-color':'#0e1a24','text-halo-width':1.6,'text-opacity':['interpolate',['linear'],['zoom'],minzoom,0,minzoom+.5,.95]}});
    }
-   ready=true;wholeCity(0);$('perspective').textContent='Flat view';$('perspective').setAttribute('aria-pressed','true');
+   // Place road labels beneath the 3D buildings.
+for (const priority of [0, 1, 2]) {
+  map.moveLayer(`road-labels-${priority}`, 'buildings');
+}
+  ready=true;wholeCity(0);$('perspective').textContent='Flat view';$('perspective').setAttribute('aria-pressed','true');
    map.once('idle',()=>{$('loading').classList.add('hidden');for(const id of ['ceiling','play','reset'])$(id).disabled=false;setCeiling(ceilingMax);stop();});
    hoverPopup=new maplibregl.Popup({closeButton:false,closeOnClick:false,maxWidth:'250px',offset:12});
    lockedPopup=new maplibregl.Popup({closeButton:true,closeOnClick:false,maxWidth:'250px',offset:12});
