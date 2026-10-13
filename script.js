@@ -1,12 +1,12 @@
 'use strict';
 // Band boundaries are lower-inclusive; null heights belong only to Unknown.
 const BANDS=[
- {label:'Under 10 m',color:'#7fb4ee'},
- {label:'10–<20 m',color:'#2fb3ad'},
- {label:'20–<40 m',color:'#e6d36a'},
- {label:'40–<80 m',color:'#f08f4f'},
- {label:'80 m and above',color:'#e8476a'},
- {label:'Height unknown',color:'#5b6670'}
+ {label:'Under 10 m',color:'#319DBB'},
+ {label:'10–<20 m',color:'#477DDD'},
+ {label:'20–<40 m',color:'#6859DF'},
+ {label:'40–<80 m',color:'#A344D4'},
+ {label:'80 m and above',color:'#E32BC2'},
+ {label:'Height unknown',color:'#5B6670'}
 ];
 const $=id=>document.getElementById(id),fmt=n=>n.toLocaleString('en-CA');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
